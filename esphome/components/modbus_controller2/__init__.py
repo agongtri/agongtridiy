@@ -5,6 +5,14 @@ from esphome.const import CONF_ID, CONF_MODBUS_ID, CONF_ADDRESS, CONF_UPDATE_INT
 
 DEPENDENCIES = ["modbus"]
 
+import esphome.codegen as cg
+import esphome.config_validation as cv
+from esphome.components import modbus
+from esphome.components.modbus import CONF_MODBUS_ID
+from esphome.const import CONF_ID, CONF_ADDRESS, CONF_UPDATE_INTERVAL
+
+DEPENDENCIES = ["modbus"]
+
 modbus_controller2_ns = cg.esphome_ns.namespace("modbus_controller2")
 ModbusController2 = modbus_controller2_ns.class_("ModbusController2", cg.Component)
 
@@ -20,7 +28,6 @@ async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
 
-    # FIX bagian ini -> ambil variabel modbus lewat cg.get_variable
     modbus_dev = await cg.get_variable(config[CONF_MODBUS_ID])
     cg.add(var.set_modbus_id(modbus_dev))
 
