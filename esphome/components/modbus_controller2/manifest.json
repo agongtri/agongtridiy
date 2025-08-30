@@ -1,0 +1,8 @@
+{
+  "domain": "modbus_controller2",
+  "name": "Modbus Controller 2",
+  "documentation": "https://esphome.io/components/modbus_controller.html",
+  "requirements": [],
+  "codeowners": ["@agongtri"],
+  "version": "1.0.0"
+}
