@@ -19,7 +19,7 @@ CONFIG_SCHEMA = cv.ensure_list(
         {
             cv.GenerateID(): cv.declare_id(ModbusController2),
             cv.Required(CONF_ADDRESS): cv.int_,
-            cv.Required(CONF_MODBUS_ID): cv.use_id(modbus.ModbusComponent),
+            cv.Required(CONF_MODBUS_ID): cv.use_id(modbus.ModbusDevice),
             cv.Optional(CONF_UPDATE_INTERVAL, default="1s"): cv.update_interval,
         }
     ).extend(cv.COMPONENT_SCHEMA)
