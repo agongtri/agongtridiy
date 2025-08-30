@@ -11,13 +11,16 @@ DEPENDENCIES = ["modbus"]
 modbus_controller2_ns = cg.esphome_ns.namespace("modbus_controller2")
 ModbusController2 = modbus_controller2_ns.class_("ModbusController2", cg.Component)
 
-CONFIG_SCHEMA = cv.Schema(
-    {
-        cv.GenerateID(): cv.declare_id(ModbusController2),
-        cv.Required(CONF_MODBUS_ID): cv.use_id(modbus.ModbusDevice),
-        cv.Required(CONF_ADDRESS): cv.int_,
-        cv.Optional(CONF_UPDATE_INTERVAL, default="60s"): cv.update_interval,
-    }
+CONFIG_SCHEMA = cv.ensure_list(
+    cv.Schema(
+        {
+            cv.GenerateID(): cv.declare_id(ModbusController2),
+            cv.Required(CONF_ADDRESS): cv.int_,
+            cv.Required(CONF_MODBUS_ID): cv.use_id(ModbusComponent),
+            cv.Optional(CONF_UPDATE_INTERVAL, default="1s"): cv.update_interval,
+        }
+    )
+)
 ).extend(cv.COMPONENT_SCHEMA)
 
 
