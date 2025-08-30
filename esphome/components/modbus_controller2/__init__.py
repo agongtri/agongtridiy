@@ -19,9 +19,8 @@ CONFIG_SCHEMA = cv.ensure_list(
             cv.Required(CONF_MODBUS_ID): cv.use_id(ModbusComponent),
             cv.Optional(CONF_UPDATE_INTERVAL, default="1s"): cv.update_interval,
         }
-    )
+    ).extend(cv.COMPONENT_SCHEMA)
 )
-).extend(cv.COMPONENT_SCHEMA)
 
 
 async def to_code(config):
